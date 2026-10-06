@@ -1,0 +1,2 @@
+import { test,expect } from '@playwright/test';
+test('scores a lead through the primary flow',async({page})=>{await page.goto('/');await page.getByLabel('Company name').fill('Acme Corp');await page.getByLabel('Company size').selectOption('large');await page.getByLabel('Buying intent').selectOption('ready');await page.getByRole('button',{name:'Score lead'}).click();await expect(page.getByText('Loading score…')).toBeVisible();await expect(page.getByRole('heading',{name:'Lead score'})).toBeVisible();await expect(page.getByText('Hot')).toBeVisible()});
